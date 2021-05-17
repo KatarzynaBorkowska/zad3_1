@@ -1,14 +1,26 @@
-//
-//  main.cpp
-//  zad3_1
-//
-//  Created by Kasia on 14/05/2021.
-//
+//Katarzyna Borkowska 7
+//zad 3_1
 
 #include <iostream>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+using namespace std;
+int NWD(int a,int b)
+{
+    return a == b?a:(a > b?NWD(a - b, b):NWD(a, b - a));
+}
+int NWW(int a,int b)
+{
+    return a * b/ NWD(a, b);
+}
+void fun(int a,int b,int *c,int *d)
+{
+    *c = NWD(a, b);
+    *d = NWW(a, b);
+}
+int main() {
+    int a,b,c,d;
+    cin >> a >> b;
+    fun(a, b, &c, &d);
+    cout << "NWD = " << c << " NWW = " << d << endl;
+    
     return 0;
 }
